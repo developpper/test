@@ -13,7 +13,7 @@ const videos = [
   { src: "/myvideo.mp4", productImg: "/product4.png" },
 ];
 
-const VideoSection = () => {
+const ScrollableVideoSection = () => {
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [isPlaying, setIsPlaying] = useState<boolean[]>(videos.map(() => false));
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -152,4 +152,4 @@ const VideoSection = () => {
   );
 };
 
-export default VideoSection;
+export default ScrollableVideoSection;

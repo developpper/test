@@ -1,6 +1,7 @@
-import ImageSection from "@/components/ui/ImageSection";
-import ScrollableVideoSection from "@/components/ui/ScrollableVideoSection";
-import VideoSection from "@/components/ui/VideoSection";
+import ImageSection from "../components/ui/ImageSection";
+import ScrollableVideoSection from "../components/ui/ScrollableVideoSection";
+import VideoSection from "../components/ui/VideoSection";
+
 
 
 export default function Home() {
