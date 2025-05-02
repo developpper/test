@@ -64,8 +64,7 @@ const ScrollableVideoSection = () => {
   }, []);
 
   return (
-    <div className="w-full py-10 bg-white relative">
-      {/* Videos Scroll Area */}
+    <div className="w-full py-10 bg-white relative !bg-[#FFEDFA]">
       <div
         ref={scrollRef}
         className="flex overflow-x-auto gap-4 px-4 pb-6 relative scroll-smooth"

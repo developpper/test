@@ -1,79 +1,63 @@
 "use client";
 
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { FaInstagram } from "react-icons/fa";
 
 const images = [
-  { src: "/file.svg" },
-  { src: "/file.svg" },
-  { src: "/file.svg" },
-  { src: "/file.svg" },
-  { src: "/file.svg" },
-  { src: "/file.svg" },
-  { src: "/file.svg" },
+  { src: "https://haneenalsaify.com/cdn/shop/files/IMG_8004_380x506_crop_center.jpg?v=1654814408" },
+  { src: "https://haneenalsaify.com/cdn/shop/files/CA7A3F00-8AE6-4461-AF5B-250A90E64A18_380x506_crop_center.jpg?v=1654814174" },
+  { src: "https://haneenalsaify.com/cdn/shop/files/IMG_8006_db9e34da-860d-4f35-90a6-958853e494d3_380x506_crop_center.jpg?v=1654814408" },
+  { src: "https://haneenalsaify.com/cdn/shop/files/IMG_8005_380x506_crop_center.jpg?v=1654814408" },
+  { src: "https://haneenalsaify.com/cdn/shop/files/IMG_8007_380x506_crop_center.jpg?v=1654814409" },
 ];
 
 const ImageSection = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
-
-  const scroll = (scrollOffset: number, smooth = true) => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollBy({
-        left: scrollOffset,
-        behavior: smooth ? "smooth" : "auto",
-      });
-    }
-  };
-
-  const handleScroll = () => {
-    if (scrollRef.current) {
-      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
-      const progress = (scrollLeft / (scrollWidth - clientWidth)) * 100;
-      setScrollProgress(progress);
-    }
-  };
 
   useEffect(() => {
-    const current = scrollRef.current;
-    if (current) {
-      current.addEventListener("scroll", handleScroll);
+    const container = scrollRef.current;
+    if (!container) return;
 
-      const interval = setInterval(() => {
-        if (current.scrollLeft >= current.scrollWidth / 2) {
-          // Reset to start when scrolled half
-          current.scrollTo({ left: 0, behavior: "auto" });
-        } else {
-          scroll(3, false); // ⬅️ Increased scroll distance (3 pixels instead of 1)
-        }
-      }, 10); // ⬅️ Reduced interval to 10ms for faster update
+    let animationFrameId: number;
+    const speed = 0.5;
 
-      return () => {
-        current.removeEventListener("scroll", handleScroll);
-        clearInterval(interval);
-      };
-    }
+    const scroll = () => {
+      if (!container) return;
+
+      container.scrollLeft += speed;
+
+      // Reset scroll if near end (to beginning of duplicated content)
+      if (container.scrollLeft >= container.scrollWidth - container.clientWidth - 1) {
+        container.scrollLeft = 0;
+      }
+
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    animationFrameId = requestAnimationFrame(scroll);
+
+    return () => cancelAnimationFrame(animationFrameId);
   }, []);
 
+  // Tripling the images to ensure seamless infinite scroll
+  const extendedImages = [...images, ...images, ...images];
+
   return (
-    <div className="w-full py-10 bg-white relative">
-      {/* Images Scroll Area */}
+    <div className="w-full bg-[#FFEDFA] py-10 overflow-hidden">
       <div
         ref={scrollRef}
-        className="flex overflow-x-auto gap-4 px-4 pb-6 relative scroll-smooth"
-        style={{ scrollbarWidth: "none" }}
+        className="flex gap-4 px-4 overflow-x-scroll scroll-smooth no-scrollbar"
       >
-        {[...images, ...images].map((image, index) => (
+        {extendedImages.map((image, index) => (
           <div
             key={index}
-            className="relative group w-44 md:w-52 p-2  overflow-hidden rounded bg-gray-200 shadow-lg shrink-0"
+            className="relative group w-44 md:w-52 p-2 shrink-0 rounded bg-gray-200 shadow-lg"
           >
             <img
               src={image.src}
               alt={`Image ${index + 1}`}
               className="w-full h-full object-cover"
             />
-            {/* Instagram Icon */}
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition bg-black/30">
               <FaInstagram className="text-white text-4xl" />
             </div>

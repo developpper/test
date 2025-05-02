@@ -4,7 +4,7 @@ import React from "react";
 
 const VideoSection = () => {
   return (
-    <div className="relative w-full min-h-screen overflow-hidden">
+    <div className="relative w-full min-h-screen overflow-hidden !bg-[#FFEDFA]">
       {/* Video Background */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"

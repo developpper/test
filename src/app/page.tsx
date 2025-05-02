@@ -6,7 +6,7 @@ import VideoSection from "../components/ui/VideoSection";
 
 export default function Home() {
   return (
-    <main >
+    <main className="bg-#FFDBDB">
       <VideoSection/>
       <ScrollableVideoSection/>
       <ImageSection/>
