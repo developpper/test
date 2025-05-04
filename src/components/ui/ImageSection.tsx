@@ -43,7 +43,7 @@ const ImageSection = () => {
   const extendedImages = [...images, ...images, ...images];
 
   return (
-    <div className="w-full bg-[#FFEDFA] py-10 overflow-hidden">
+    <div className="w-full bg-[#FFEDFA] py-10 overflow-hidden !bg-[#FFEDFA]">
       <div
         ref={scrollRef}
         className="flex gap-4 px-4 overflow-x-scroll scroll-smooth no-scrollbar"
