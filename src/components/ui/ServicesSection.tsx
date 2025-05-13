@@ -4,22 +4,22 @@ const services = [
   {
     title: "FOUNDATION FINDER",
     button: "FIND MY SHADE PRECISELY",
-    images: ["/image1.jpg", "/image2.jpg"],
+    images: ["/image1.jpg", "/image2.jpg", "/makeup2.jpg"],
   },
   {
     title: "SKINCARE PRO ADVISOR",
     button: "DEFINE YOUR ROUTINE",
-    images: ["/makeup1.jpg", "/makeup2.jpg"],
+    images: ["/makeup1.jpg", "/makeup2.jpg", "/image2.jpg"],
   },
   {
     title: "FOUNDATION FINDER",
     button: "FIND MY SHADE PRECISELY",
-    images: ["/image1.jpg", "/image2.jpg"],
+    images: ["/image1.jpg", "/image2.jpg", "/makeup2.jpg"],
   },
   {
     title: "SKINCARE PRO ADVISOR",
     button: "DEFINE YOUR ROUTINE",
-    images: ["/makeup1.jpg", "/makeup2.jpg"],
+    images: ["/makeup1.jpg", "/makeup2.jpg", "/image1.jpg"],
   },
 ];
 
@@ -32,7 +32,6 @@ export default function ServicesSection() {
         </h2>
       </div>
 
-      {/* Wrapper for responsive layout */}
       <div className="px-4">
         <div
           className="
@@ -48,28 +47,40 @@ export default function ServicesSection() {
           {services.map((service, idx) => (
             <div
               key={idx}
-              className="
-                inline-block md:inline-block 
-                w-80 md:w-auto 
-                 p-4 
-                flex-shrink-0
-              "
+              className="inline-block md:inline-block w-80 md:w-auto p-4 flex-shrink-0"
             >
-              <div className="flex gap-2 mb-4">
-                {service.images.map((imgSrc, imgIdx) => (
-                  <div key={imgIdx} className="w-1/2 h-24 relative">
-                    <Image
-                      src={imgSrc}
-                      alt={service.title}
-                      layout="fill"
-                      objectFit="cover"
-                      className="rounded-md"
-                    />
-                  </div>
-                ))}
+              {/* Image Layout */}
+              <div className="flex gap-2 mb-4 h-48">
+                {/* Left large image */}
+                <div className="relative w-2/3">
+                  <Image
+                    src={service.images[0]}
+                    alt={service.title}
+                    layout="fill"
+                    objectFit="cover"
+                    className="rounded-lg"
+                  />
+                </div>
+
+                {/* Right - two small stacked images */}
+                <div className="w-1/3 flex flex-col gap-2">
+                  {[service.images[1], service.images[2]].map((img, i) => (
+                    <div key={i} className="relative h-1/2">
+                      <Image
+                        src={img}
+                        alt={`${service.title} ${i + 2}`}
+                        layout="fill"
+                        objectFit="cover"
+                        className="rounded-lg"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
+
+              {/* Title and Button */}
               <h3 className="text-center font-semibold text-sm mb-2">{service.title}</h3>
-              <button className="bg-white border border-gray-200 shadow text-black text-xs py-1 px-4 rounded-lg w-full">
+              <button className="bg-white border border-gray-200 shadow text-black text-xs py-2 px-4 rounded-lg w-full font-semibold">
                 {service.button}
               </button>
             </div>
