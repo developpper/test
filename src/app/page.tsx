@@ -1,5 +1,6 @@
 import Header from "../components/ui/Header";
 import ImageSection from "../components/ui/ImageSection";
+import Invoice from "../components/ui/Invoice";
 import ScrollableVideoSection from "../components/ui/ScrollableVideoSection";
 import SearchProduct from "../components/ui/SearchProduct";
 import ServicesSection from "../components/ui/ServicesSection";
@@ -16,6 +17,7 @@ export default function Home() {
       <SearchProduct/>
       <Header/> */}
       <ServicesSection/>
+      {/* <Invoice /> */}
 
     </main>
   );
