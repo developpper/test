@@ -11,13 +11,13 @@ import VideoSection from "../components/ui/VideoSection";
 export default function Home() {
   return (
     <main className="bg-#FFDBDB">
-      {/* <VideoSection/>
+      <VideoSection/>
       <ScrollableVideoSection/>
       <ImageSection/>
       <SearchProduct/>
-      <Header/> */}
+      <Header/>
       <ServicesSection/>
-      {/* <Invoice /> */}
+      <Invoice />
 
     </main>
   );

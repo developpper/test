@@ -1,11 +1,12 @@
 "use client";
-
 import React, { useRef, useState, useEffect } from "react";
+import clsx from "clsx";
+import ReelsModal from "./ReelsModal";
 
 const videos = [
   { src: "/myvideo.mp4", productImg: "/product1.png" },
   { src: "/myvideo.mp4", productImg: "/product2.png" },
-  { src: "/myvideo.mp4", productImg: "/product3.png" },
+  { src: "/myvideo.mp4", productImg: "/product3.mp4" },
   { src: "/myvideo.mp4", productImg: "/product4.png" },
   { src: "/myvideo.mp4", productImg: "/product1.png" },
   { src: "/myvideo.mp4", productImg: "/product2.png" },
@@ -18,6 +19,9 @@ const ScrollableVideoSection = () => {
   const [isPlaying, setIsPlaying] = useState<boolean[]>(videos.map(() => false));
   const scrollRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+
+  const [reelOpen, setReelOpen] = useState(false);
+  const [currentReelIndex, setCurrentReelIndex] = useState(0);
 
   const scroll = (scrollOffset: number) => {
     if (scrollRef.current) {
@@ -41,7 +45,7 @@ const ScrollableVideoSection = () => {
     });
 
     setIsPlaying((prev) =>
-      prev.map((_, idx) => idx === index ? !prev[idx] : false)
+      prev.map((_, idx) => (idx === index ? !prev[idx] : false))
     );
   };
 
@@ -74,12 +78,15 @@ const ScrollableVideoSection = () => {
           <div
             key={index}
             className="relative w-44 md:w-52 aspect-[9/16] overflow-hidden rounded-xl bg-black shadow-lg shrink-0 group"
-            onClick={() => togglePlay(index)}
+            onClick={() => {
+              setCurrentReelIndex(index);
+              setReelOpen(true);
+            }}
           >
             <video
-            ref={(el) => {
-              videoRefs.current[index] = el;
-            }}
+              ref={(el) => {
+                videoRefs.current[index] = el;
+              }}
               className="w-full h-full object-cover"
               loop
               muted
@@ -93,7 +100,7 @@ const ScrollableVideoSection = () => {
             {/* Play/Pause SVG Icon */}
             <div className="absolute bottom-2 left-2 opacity-0 group-hover:opacity-100 transition-opacity">
               {isPlaying[index] ? (
-                // Pause Icon SVG
+                // Pause Icon
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-8 h-8 text-white bg-black/50 rounded-full p-1"
@@ -103,7 +110,7 @@ const ScrollableVideoSection = () => {
                   <path d="M6 4h4v16H6zm8 0h4v16h-4z" />
                 </svg>
               ) : (
-                // Play Icon SVG
+                // Play Icon
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-8 h-8 text-white bg-black/50 rounded-full p-1"
@@ -120,7 +127,6 @@ const ScrollableVideoSection = () => {
 
       {/* Custom Scrollbar + Buttons */}
       <div className="flex items-center px-4 gap-4 mt-4">
-        {/* Scrollbar */}
         <div className="flex-1 h-[2px] bg-gray-300 overflow-hidden rounded-full relative">
           <div
             className="absolute left-0 top-0 h-full bg-black"
@@ -131,7 +137,6 @@ const ScrollableVideoSection = () => {
           />
         </div>
 
-        {/* Left and Right Buttons */}
         <div className="flex gap-2">
           <button
             onClick={() => scroll(-300)}
@@ -147,6 +152,14 @@ const ScrollableVideoSection = () => {
           </button>
         </div>
       </div>
+
+      {reelOpen && (
+        <ReelsModal
+          videos={videos}
+          initialIndex={currentReelIndex}
+          onClose={() => setReelOpen(false)}
+        />
+      )}
     </div>
   );
 };
