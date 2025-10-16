@@ -16,5 +16,19 @@
   scrollbar-width: none;     
 }
 
+.hero-bg {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+ 
+@media (min-width: 1024px) {
+  .hero-bg {
+    background-image: url("https://www.makeupforever.com/on/demandware.static/-/Library-Sites-RefArchSharedLibrary/default/dw629501ed/marque-cfe/Collectif2.jpg");
+  }
+}
+
+
   
   

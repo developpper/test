@@ -1,8 +1,8 @@
 'use client';
- 
+
 import { Separator } from '@radix-ui/react-separator';
 import React from 'react';
- 
+
 export default function Invoice() {
     return (
         <div className="flex justify-center items-center">
@@ -33,7 +33,7 @@ export default function Invoice() {
                             <p><span className='font-semibold'>Whatsapp:</span></p>
                         </div>
                     </div>
- 
+
                     <div className="mt-6 border border-gray-300">
                         <div className="grid grid-cols-6 bg-neutral-400 font-medium text-center">
                             <div className="py-2 px-1 border-r font-semibold border-white">Sr</div>
@@ -50,7 +50,7 @@ export default function Invoice() {
                             <div className="py-2 px-1">180.00</div>
                         </div>
                     </div>
- 
+
                     {/* Totals Table */}
                     <div className="mt-6 overflow-x-auto">
                         <table className="w-full border border-gray-300 text-sm text-left">
@@ -68,7 +68,9 @@ export default function Invoice() {
                                     </tr>
                                 ))}
                                 <tr>
-                                    <p className="text-sm px-3 py-2">Total In Words : Four hundred and eight Dirhams Only.</p>
+                                    <td colSpan={2} className="text-sm px-3 py-2">
+                                        Total In Words : Four hundred and eight Dirhams Only.
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

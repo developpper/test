@@ -1,6 +1,8 @@
+import ContactUs from "../components/ui/ContactUs";
 import Header from "../components/ui/Header";
 import ImageSection from "../components/ui/ImageSection";
 import Invoice from "../components/ui/Invoice";
+import MakeUp from "../components/ui/MakeUp";
 import ScrollableVideoSection from "../components/ui/ScrollableVideoSection";
 import SearchProduct from "../components/ui/SearchProduct";
 import ServicesSection from "../components/ui/ServicesSection";
@@ -11,14 +13,15 @@ import VideoSection from "../components/ui/VideoSection";
 export default function Home() {
   return (
     <main className="bg-#FFDBDB">
-      <VideoSection/>
+      {/* <VideoSection/>
       <ScrollableVideoSection/>
       <ImageSection/>
       <SearchProduct/>
       <Header/>
       <ServicesSection/>
-      <Invoice />
-
+      <Invoice /> */}
+      {/* <MakeUp /> */}
+      <ContactUs />
     </main>
   );
 }
