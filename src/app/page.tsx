@@ -6,13 +6,15 @@ import MakeUp from "../components/ui/MakeUp";
 import ScrollableVideoSection from "../components/ui/ScrollableVideoSection";
 import SearchProduct from "../components/ui/SearchProduct";
 import ServicesSection from "../components/ui/ServicesSection";
+import Slider1 from "../components/ui/Slider1";
+import Slider2 from "../components/ui/Slider2";
 import VideoSection from "../components/ui/VideoSection";
 
 
 
 export default function Home() {
   return (
-    <main className="bg-#FFDBDB">
+    <main className="bg-#FFDBDB m-5">
       {/* <VideoSection/>
       <ScrollableVideoSection/>
       <ImageSection/>
@@ -21,7 +23,9 @@ export default function Home() {
       <ServicesSection/>
       <Invoice /> */}
       {/* <MakeUp /> */}
-      <ContactUs />
+      {/* <ContactUs /> */}
+      <Slider1/>
+      <Slider2/>
     </main>
   );
 }
