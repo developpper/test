@@ -14,9 +14,9 @@ export default function Slider2() {
   const nextRef = useRef(null);
 
   const smallSlides = [
-    { id: 1, src: "/banner1.jpg" },
-    { id: 2, src: "/banner2.jpg" },
-    { id: 3, src: "/banner1.jpg" },
+    { id: 1, src: "/banner1.jpeg" },
+    { id: 2, src: "/banner2.jpeg" },
+    { id: 3, src: "/banner3.jpeg" },
   ];
 
   return (
@@ -78,7 +78,7 @@ export default function Slider2() {
       {/* RIGHT — static image */}
       <div className="hidden md:block w-1/3 relative h-60 ml-3">
         <Image
-          src="/newslatter.jpg"
+          src="/banner3.jpeg"
           alt="Large Banner"
           fill
           className="object-cover"

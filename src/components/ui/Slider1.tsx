@@ -14,9 +14,9 @@ export default function Slider1() {
   const nextRef = useRef(null);
 
   const banners = [
-    { id: 1, src: "/banner1.jpg", alt: "Slide 1" },
-    { id: 2, src: "/banner2.jpg", alt: "Slide 2" },
-    { id: 3, src: "/banner2.jpg", alt: "Slide 3" },
+    { id: 1, src: "/banner4.jpeg", alt: "Slide 1" },
+    { id: 2, src: "/banner2.jpeg", alt: "Slide 2" },
+    { id: 3, src: "/banner3.jpeg", alt: "Slide 3" },
   ];
 
   return (
