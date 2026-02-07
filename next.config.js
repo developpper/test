@@ -1,11 +1,11 @@
-// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['storage.googleapis.com',
-      'images.kikocosmetics.com',
+    remotePatterns: [
+      { protocol: 'https', hostname: 'storage.googleapis.com' },
+      { protocol: 'https', hostname: 'images.kikocosmetics.com' },
+      { protocol: 'https', hostname: 'images.unsplash.com' },
     ],
-    
   },
 };
 
