@@ -11,7 +11,7 @@ import Slider2 from "../components/ui/Slider2";
 import VideoSection from "../components/ui/VideoSection";
 
 // Import the new Landing Page
-import SheglamLanding from "../components/ui/SheglamLanding";
+import SheglamLanding from "../components/ui/sheglam/SheglamLanding";
 
 export default function Home() {
   return (
